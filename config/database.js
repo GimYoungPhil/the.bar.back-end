@@ -1,4 +1,4 @@
 // config/database.js
 module.exports = {
-  'url' : 'mongodb://theone:theone@ds039421.mongolab.com:39421/the-bar'
+  'url' : 'mongodb://theone:theman@ds045531.mongolab.com:45531/the-bar'
 };
