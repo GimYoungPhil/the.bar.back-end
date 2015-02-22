@@ -18,9 +18,16 @@ mongoose.connect(configDB.url);
 /* GET users listing. */
 router.get('/bottles', function(req, res, next) {
 
+  // Bottle.find({}, function(err, list) {
+  //   if (err)
+  //     next();
+  //   res.status(200).send(list.sort({'stockDate':-1}));
+  // });
+  
   Bottle.find({}, function(err, list) {
     if (err)
       next();
+    list.sort({'stockDate':1});
     res.status(200).send(list);
   });
 
