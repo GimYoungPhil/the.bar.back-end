@@ -18,32 +18,56 @@ mongoose.connect(configDB.url);
 /* GET users listing. */
 router.get('/bottles', function(req, res, next) {
 
+  // Bottle.find({}, function(err, list) {
+  //   if (err)
+  //     next();
+  //   res.status(200).send(list.sort({'stockDate':-1}));
+  // });
+  
   Bottle.find({}, function(err, list) {
     if (err)
       next();
+    list.sort({'stockDate':1});
     res.status(200).send(list);
   });
 
-  return false;
 });
 
 router.get('/bottles/:id', function(req, res, next) {
 
-  console.log('bottles/id');
-  // client.blogInfo(blogName, function(err, data) {
-  //   res.send(data);
-  // });
+  Bottle.findById(req.params.id, function(err, bottle) {
+    if (err)
+      next();
+    res.status(200).send(bottle);
+  });
 
-  // return false;
+});
+
+router.put('/bottles/:id', function(req, res, next) {
+
+  Bottle.findById(req.params.id, function(err, bottle) {
+    if (err)
+      next();
+    bottle.title   = req.body.title;
+    bottle.alcohol = req.body.alcohol;
+
+    bottle.save(function(err) {
+      if (err)
+        next();
+      res.status(200).send(bottle);
+    });
+  });
+
 });
 
 router.post('/bottles', function(req, res, next) {
   var newBottle  = new Bottle({
     title:        req.body.title,
-    imageLink:    req.body.imageLink,
+    alcohol:     req.body.alcohol,
+    
+    // imageLink:    req.body.imageLink,
     // type:        req.body.type,
     // volume:      req.body.volume,
-    // alcohol:     req.body.alcohol,
     // state:       req.body.state,
     // nationality: req.body.nationality,
     // brewingDate: req.body.brewingDate,

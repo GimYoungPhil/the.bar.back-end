@@ -44,9 +44,12 @@ var bottleSchema = new Schema({
   },
   brewingDate: {
     required: false,
+    type: Date
+  },
+  stockDate: {
+    required: true,
     type: Date,
-    default: Date.now,
-    required: true
+    default: Date.now
   }
 });
 
