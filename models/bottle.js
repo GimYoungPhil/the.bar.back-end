@@ -11,19 +11,19 @@ var bottleSchema = new Schema({
     required: false,
     type: String,
     trim: true,
-    max: 100
+    max: 10
   },
   volume: {
     required: false,
-    type: String,
-    trim: true,
-    max: 10
+    type: Number,
+    // trim: true,
+    // max: 10
   },
   alcohol: {
     required: false,
-    type: String,
-    trim: true,
-    max: 10
+    type: Number,
+    // trim: true,
+    // max: 10
   },
   state: {
     required: false,
@@ -38,9 +38,16 @@ var bottleSchema = new Schema({
     max: 10
   },
   imageLink: {
+    required: false,
     type: String,
     trim: true,
-    max: 100
+    max: 200
+  },
+  memo: {
+    required: false,
+    type: String,
+    trim: true,
+    max: 300
   },
   brewingDate: {
     required: false,

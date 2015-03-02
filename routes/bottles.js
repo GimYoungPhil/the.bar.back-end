@@ -62,17 +62,16 @@ router.put('/bottles/:id', function(req, res, next) {
 
 router.post('/bottles', function(req, res, next) {
   var newBottle  = new Bottle({
-    title:        req.body.title,
+    title:       req.body.title,
+    imageLink:   req.body.imageLink,
     alcohol:     req.body.alcohol,
-    
-    // imageLink:    req.body.imageLink,
-    // type:        req.body.type,
-    // volume:      req.body.volume,
-    // state:       req.body.state,
-    // nationality: req.body.nationality,
-    // brewingDate: req.body.brewingDate,
+    volume:      req.body.volume,
+    type:        req.body.type,
+    state:       req.body.state,
+    nationality: req.body.nationality,
+    brewingDate: req.body.brewingDate,
+    memo:        req.body.memo
     // stockDate:   req.body.stockDate,
-    // memo:        req.body.memo,
   });
 
   newBottle.save(function(err, bottle) {
