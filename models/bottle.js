@@ -7,6 +7,11 @@ var bottleSchema = new Schema({
     type: String,
     trim: true
   },
+  subTitle: {
+    required: false,
+    type: String,
+    trim: true
+  },
   type: {
     required: false,
     type: String,
@@ -29,6 +34,7 @@ var bottleSchema = new Schema({
     required: false,
     type: String,
     trim: true,
+    default: "close",
     max: 10
   },
   nationality: {
@@ -54,6 +60,11 @@ var bottleSchema = new Schema({
     type: Date
   },
   stockDate: {
+    required: true,
+    type: Date,
+    default: Date.now
+  },
+  updateDate: {
     required: true,
     type: Date,
     default: Date.now
